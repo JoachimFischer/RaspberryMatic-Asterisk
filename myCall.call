@@ -1,0 +1,11 @@
+; In dem Verzeichnis /root die Datei Datei /root/mycall.call anlegen. 
+; Um einen Call auszuführen, ist es notwendig, diese Datei nach Asterisk zu kopiren. Dies erfolgt mit dem Command:
+; cp /root/mycall.call  /var/spool/asterisk/outgoing
+;
+Channel: SIP/0172xxxxxx@alarmanruf   ; hier die externe Handy Nummer eintragen, die Angerufen werden soll
+MaxRetries: 2
+RetryTime: 60
+WaitTime: 30
+Context: asterisk-phones
+Extension: 10
+Callerid:2000
