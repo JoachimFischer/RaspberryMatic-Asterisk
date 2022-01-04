@@ -17,7 +17,7 @@ Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichni
 
 Die Datei ``mycall.call`` enthält die folgende Information:
 ``Channel: SIP/0171HANDYNUMMER@alarmanruf
-MaxRetries: 2 <p>
+MaxRetries: 2
 RetryTime: 60
 WaitTime: 30
 Context: asterisk-phones
