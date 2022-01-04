@@ -32,6 +32,27 @@ Extension: 10
 Callerid:2000
 ```
 
+Die Dateien liegen als templete unter ``` /etc/asterisk ```. Hier wird eine weitere Datei mit dem Namen extensions.conf wird agelegt. Diese Datei enthält die Information, welche WAV Datei abgespielt werden soll. In diesem Fall ist es die Datei alarmmeldung, die als Sounddatei alammeldung.wav in das Verzeichnis ```/var/lib/asterisk/sounds/my/``` kopiert wird. 
+
+Wenn man eine Sounddateie im mp3 Format hat, muss diese umgewandelt werden in wav Format mit dem folgenden Befehl:
+```ruby
+root@fipbox:~# ffmpeg -i /tmp/mySpeech.mp3 -ar 8000 -ac 1 -ab 64 /var/lib/asterisk/sounds/my/mySpeech.wav
+```ruby
+
+Datei: extensions.conf
+```ruby
+[general]
+autofallthrough=no
+static=yes
+writeprotect=no
+exten => _0X.,1,Dial(SIP/${EXTEN}@alarmanruf,60,r)
+[asterisk-phones]
+exten => 10,1,Answer()
+exten => 10,n,Wait(2)
+exten => 10,n,Playback(/var/lib/asterisk/sounds/my/alarmmeldung)
+exten => 10,n,Wait(2)
+exten => 10,n,Hangup()
+```
 
 
 
