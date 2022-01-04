@@ -72,6 +72,7 @@ nat = yes
 transport = udp
 register => alarmanruf:ppppp@192.168.1.1/alarmanruf    ; Für die Registrierung der SIP aus der FritzBox
                                                        ; In der FritzBox habe ich einen SIP mit user: alarmanruf und passwort: ppppp sowie Namen: alarmanruf eingerichtet
+                                                       ; ppppp ist das Passwort, das in der Fritz!Box für den SIP hinterlegt ist
 
 [alarmanruf]                                           ; Von der SIP config in der FritzBox
 permit=192.168.1.1/255.255.255.0                       ; IP der FritzBox
