@@ -11,8 +11,19 @@ Test der Asterisk installation:
 Asterisk already running on /var/run/asterisk/asterisk.ctl.  Use 'asterisk -r' to connect.``
 
 
-Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren
-cp /root/mycall.call /var/spool/asterisk/outgoing
+Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren:
+
+``root@fipbox:~# cp /root/mycall.call /var/spool/asterisk/outgoing``
+
+Die Datei ``mycall.call`` enthält die folgende Information:
+``Channel: SIP/0171HANDYNUMMER@alarmanruf
+MaxRetries: 2
+RetryTime: 60
+WaitTime: 30
+Context: asterisk-phones
+Extension: 10
+Callerid:2000
+``
 
 
 
