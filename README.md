@@ -108,7 +108,7 @@ Wenn keine freie ISDN Nummer mehr vorhanden ist, kann auch über www.SipGate.de 
 
 Wenn die SIP eingerichtet ist, kann der Asterisk Server getestet werden mit den folgenden Befehlen:
 ```ruby
-asterisk -r
+asterisk -r                                                                                      ; den Befehl absetzen
 Asterisk 16.2.1~dfsg-1+deb10u2, Copyright (C) 1999 - 2018, Digium, Inc. and others.
 Created by Mark Spencer <markster@digium.com>
 Asterisk comes with ABSOLUTELY NO WARRANTY; type 'core show warranty' for details.
@@ -116,8 +116,8 @@ This is free software, with components licensed under the GNU General Public
 License version 2 and other licenses; you are welcome to redistribute it under
 certain conditions. Type 'core show license' for details.
 =========================================================================
-Connected to Asterisk 16.2.1~dfsg-1+deb10u2 currently running on fipbox (pid = 490)
-fipbox*CLI> sip show registry                                                                              ; im CLI den Befehl absetzen
+Connected to Asterisk 16.2.1~dfsg-1+deb10u2 currently running on fipbox (pid = 490)               ; anschließend startet die CLI
+fipbox*CLI> sip show registry                                                                     ; im CLI den Befehl absetzen
 Host                                    dnsmgr Username       Refresh State                Reg.Time                 
 192.168.1.1:5060                        N      alarmanruf         285 Registered           Tue, 04 Jan 2022 19:40:21
 ```
