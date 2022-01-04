@@ -77,7 +77,7 @@ Wenn man eine Sounddateie im mp3 Format hat, muss diese umgewandelt werden in ei
 ffmpeg -i /tmp/mySpeech.mp3 -ar 8000 -ac 1 -ab 64k /var/lib/asterisk/sounds/my/mySpeech.wav
 ```
 
-Datei: extensions.conf
+Datei: ```extensions.conf```
 ```ruby
 [general]
 autofallthrough=no
@@ -117,7 +117,7 @@ alarmanruf/alarmanruf     192.168.1.1                                 Yes       
 ```
 
 ## Schritt 6:
-Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren:
+Um einen Test Call durchzuführen, muss die Datei  ```mycall.call``` in das Verzeichnis  ```/var/spool/asterisk/outgoing```  copieren:
 
 ```ruby
 root@fipbox:~# cp /root/mycall.call /var/spool/asterisk/outgoing
@@ -125,11 +125,11 @@ root@fipbox:~# cp /root/mycall.call /var/spool/asterisk/outgoing
 
 Die Datei ``mycall.call`` enthält die folgende Information und liegt imm Verzeichnis ```/root```: 
 ```ruby
-Channel: SIP/0171HANDYNUMMER@alarmanruf
+Channel: SIP/0171HANDYNUMMER@alarmanruf        ; enhält die Handynummer mit 0172xxxx  sowie den SIP user alarmanruf
 MaxRetries: 2
 RetryTime: 60
 WaitTime: 30
-Context: asterisk-phones
+Context: asterisk-phones                        ;Dies ist der Verweis in die Datei extensions.conf und legt fest wie der anruf durchgeführt werden soll
 Extension: 10
 Callerid:2000
 ```
