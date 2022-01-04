@@ -5,7 +5,8 @@ Schritt1:
 Installation vom Asterisk Server auf dem Raspberry
 ```ruby
 root@fipbox:~# su root
-sudo apt-get install asterisk```
+sudo apt-get install asterisk
+```
 
 Test der Asterisk installation:
 ``root@fipbox:~# asterisk -c
