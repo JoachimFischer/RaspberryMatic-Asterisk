@@ -3,8 +3,9 @@ RaspberryMatic kann Telefonanrufe über die PBX Asterisk ausführen für Alarmme
 
 Schritt1:
 Installation vom Asterisk Server auf dem Raspberry
-```root@fipbox:~# su root```
-``sudo apt-get install asterisk``
+```ruby
+root@fipbox:~# su root
+sudo apt-get install asterisk```
 
 Test der Asterisk installation:
 ``root@fipbox:~# asterisk -c
