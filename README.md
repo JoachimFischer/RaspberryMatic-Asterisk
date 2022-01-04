@@ -11,7 +11,7 @@ Test der Asterisk installation:
 Asterisk already running on /var/run/asterisk/asterisk.ctl.  Use 'asterisk -r' to connect.``
 
 
-Um einen Test Call durchzuführen, die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren
+Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren
 cp /root/mycall.call /var/spool/asterisk/outgoing
 
 
