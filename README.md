@@ -69,7 +69,7 @@ host = 192.168.1.1                                     ; FritzBox
 ```
 
 ## Schritt 4:
-Die Dateien liegen als templete unter ``` /etc/asterisk ```. Hier wird eine weitere Datei mit dem Namen extensions.conf wird agelegt. Diese Datei enthält die Information, welche WAV Datei abgespielt werden soll. In diesem Fall ist es die Datei alarmmeldung, die als Sounddatei alammeldung.wav in das Verzeichnis ```/var/lib/asterisk/sounds/my/``` kopiert wird. 
+Die Dateien liegen als Vorlage unter ``` /etc/asterisk ```. Hier wird eine weitere Datei mit dem Namen extensions.conf wird agelegt. Diese Datei enthält die Information, welche WAV Datei abgespielt werden soll. In diesem Fall ist es die Datei ```alarmmeldung```, die als Sounddatei ```alammeldung.wav``` in das Verzeichnis ```/var/lib/asterisk/sounds/my/``` kopiert wird. 
 
 Eine beliebige Sound Datei kann mit Text to Speech erstellt werden, z.B. hier https://ttsfree.com/text-to-speech/german
 Wenn man eine Sounddateie im mp3 Format hat, muss diese umgewandelt werden in ein wav Format mit dem folgenden Befehl auf dem Raspberry:
