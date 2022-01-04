@@ -86,4 +86,19 @@ secret = ppppp                                         ; Von der SIP config in d
 host = 192.168.1.1                                     ; FritzBox
 ```
 
-In der Fritz!Box ist die folgende Configuration hinterlegt worden:
+In der Fritz!Box 6591 Cable ist die folgende Configuration für das Telefon hinterlegt worden:
+```ruby
+Name:                alarmanruf
+Anschluss:           LAN/WAN
+Rufnummer ausgehend: 02xxxxxxx1      ; freie ISDN Nummer
+Rufnummer ankommend: 02xxxxxxx1      ; freie ISDN Nummer
+intern:              **620
+```
+Sowie den Anmeldedaten:
+
+Verwenden Sie die folgenden Anmeldedaten, um Ihr IP-Telefon an der FRITZ!Box anzumelden.
+```ruby
+Registrar:     fritz.box oder 192.168.1.1
+Benutzername:  alarmanruf
+Kennwort:      ppppp                       ; secret = ppppp
+```
