@@ -125,11 +125,11 @@ root@fipbox:~# cp /root/mycall.call /var/spool/asterisk/outgoing
 
 Die Datei ``mycall.call`` enthält die folgende Information und liegt imm Verzeichnis ```/root```: 
 ```ruby
-Channel: SIP/0171HANDYNUMMER@alarmanruf        ; enhält die Handynummer mit 0172xxxx  sowie den SIP user alarmanruf
+Channel: SIP/0171HANDYNUMMER@alarmanruf   ; enhält die Handynummer mit 0172xxxx  sowie den SIP user alarmanruf
 MaxRetries: 2
 RetryTime: 60
 WaitTime: 30
-Context: asterisk-phones                        ;Dies ist der Verweis in die Datei extensions.conf und legt fest wie der anruf durchgeführt werden soll
+Context: asterisk-phones                  ; Dies ist der Verweis in die Datei extensions.conf und legt fest wie der anruf durchgeführt werden soll
 Extension: 10
 Callerid:2000
 ```
