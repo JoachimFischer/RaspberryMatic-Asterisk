@@ -1,7 +1,7 @@
 # RaspberryMatic-Asterisk
 RaspberryMatic kann Telefonanrufe über die PBX Asterisk ausführen für Alarmmeldungen
 
-##Schritt 1:
+## Schritt 1:
 Installation vom Asterisk Server auf dem Raspberry
 ```ruby
 su root
@@ -14,7 +14,7 @@ root@fipbox:~# asterisk -c
 Asterisk already running on /var/run/asterisk/asterisk.ctl.  Use 'asterisk -r' to connect.
 ```
 
-##Schritt 2:
+## Schritt 2:
 In der Fritz!Box 6591 Cable ist die folgende Configuration für das Telefon hinterlegt worden:
 ```ruby
 Name:                alarmanruf
@@ -34,7 +34,7 @@ Kennwort:      ppppp                       ; secret = ppppp
 
 Wenn keine freie ISDN Nummer mehr vorhanden ist, kann auch über www.SipGate.de eine kostenfreie Lokale Nummer eingerichtet werden.
 
-##Schritt 3:
+## Schritt 3:
 Der Asterisk Server wird mit der Datei ```sip.conf``` konfiguriert und liegt als Vorlage im Verzeichnis ```/etc/asterisk```
 ```ruby
 [general]
@@ -69,7 +69,7 @@ secret = ppppp                                         ; Von der SIP config in d
 host = 192.168.1.1                                     ; FritzBox
 ```
 
-##Schritt 4:
+## Schritt 4:
 Die Dateien liegen als templete unter ``` /etc/asterisk ```. Hier wird eine weitere Datei mit dem Namen extensions.conf wird agelegt. Diese Datei enthält die Information, welche WAV Datei abgespielt werden soll. In diesem Fall ist es die Datei alarmmeldung, die als Sounddatei alammeldung.wav in das Verzeichnis ```/var/lib/asterisk/sounds/my/``` kopiert wird. 
 
 Eine beliebige Sound Datei kann mit Text to Speech erstellt werden, z.B. hier https://ttsfree.com/text-to-speech/german
@@ -93,7 +93,7 @@ exten => 10,n,Wait(2)
 exten => 10,n,Hangup()
 ```
 
-##Schritt 5:
+## Schritt 5:
 Wenn die SIP eingerichtet ist, kann der Asterisk Server getestet werden mit den folgenden Befehlen:
 ```ruby
 asterisk -r                                                                                      ; den Befehl absetzen
@@ -117,7 +117,7 @@ alarmanruf/alarmanruf     192.168.1.1                                 Yes       
 
 ```
 
-##Schritt 6:
+## Schritt 6:
 Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren:
 
 ```ruby
