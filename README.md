@@ -102,3 +102,5 @@ Registrar:     fritz.box oder 192.168.1.1
 Benutzername:  alarmanruf
 Kennwort:      ppppp                       ; secret = ppppp
 ```
+
+Wenn keine freie ISDN Nummer mehr vorhanden ist, kann auch über www.SipGate.de eine kostenfreie Lokale Nummer eingerichtet werden.
