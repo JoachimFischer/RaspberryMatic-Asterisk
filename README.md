@@ -37,7 +37,7 @@ Die Dateien liegen als templete unter ``` /etc/asterisk ```. Hier wird eine weit
 Wenn man eine Sounddateie im mp3 Format hat, muss diese umgewandelt werden in wav Format mit dem folgenden Befehl:
 ```ruby
 root@fipbox:~# ffmpeg -i /tmp/mySpeech.mp3 -ar 8000 -ac 1 -ab 64 /var/lib/asterisk/sounds/my/mySpeech.wav
-```ruby
+```
 
 Datei: extensions.conf
 ```ruby
