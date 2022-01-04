@@ -15,7 +15,8 @@ Asterisk already running on /var/run/asterisk/asterisk.ctl.  Use 'asterisk -r' t
 ```
 
 ## Schritt 2:
-In der Fritz!Box 6591 Cable ist die folgende Configuration für das Telefon hinterlegt worden:
+Verwenden Sie die folgenden Anmeldedaten, um Ihr IP-Telefon (SIP) an der FRITZ!Box anzumelden.
+In der Fritz!Box 6591 Cable ist die folgende Configuration für das SIP-Telefon hinterlegt worden:
 ```ruby
 Name:                alarmanruf
 Anschluss:           LAN/WAN
@@ -24,8 +25,6 @@ Rufnummer ankommend: 02xxxxxxx1      ; freie ISDN Nummer
 intern:              **620
 ```
 Sowie den Anmeldedaten:
-
-Verwenden Sie die folgenden Anmeldedaten, um Ihr IP-Telefon an der FRITZ!Box anzumelden.
 ```ruby
 Registrar:     fritz.box oder 192.168.1.1
 Benutzername:  alarmanruf
