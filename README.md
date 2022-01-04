@@ -1,7 +1,7 @@
 # RaspberryMatic-Asterisk
 RaspberryMatic kann Telefonanrufe über die PBX Asterisk ausführen für Alarmmeldungen
 
-Schritt1:
+##Schritt 1:
 Installation vom Asterisk Server auf dem Raspberry
 ```ruby
 su root
@@ -14,46 +14,27 @@ root@fipbox:~# asterisk -c
 Asterisk already running on /var/run/asterisk/asterisk.ctl.  Use 'asterisk -r' to connect.
 ```
 
-
-Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren:
-
+##Schritt 2:
+In der Fritz!Box 6591 Cable ist die folgende Configuration für das Telefon hinterlegt worden:
 ```ruby
-root@fipbox:~# cp /root/mycall.call /var/spool/asterisk/outgoing
+Name:                alarmanruf
+Anschluss:           LAN/WAN
+Rufnummer ausgehend: 02xxxxxxx1      ; freie ISDN Nummer
+Rufnummer ankommend: 02xxxxxxx1      ; freie ISDN Nummer
+intern:              **620
+```
+Sowie den Anmeldedaten:
+
+Verwenden Sie die folgenden Anmeldedaten, um Ihr IP-Telefon an der FRITZ!Box anzumelden.
+```ruby
+Registrar:     fritz.box oder 192.168.1.1
+Benutzername:  alarmanruf
+Kennwort:      ppppp                       ; secret = ppppp
 ```
 
-Die Datei ``mycall.call`` enthält die folgende Information und liegt imm Verzeichnis ```/root```: 
-```ruby
-Channel: SIP/0171HANDYNUMMER@alarmanruf
-MaxRetries: 2
-RetryTime: 60
-WaitTime: 30
-Context: asterisk-phones
-Extension: 10
-Callerid:2000
-```
+Wenn keine freie ISDN Nummer mehr vorhanden ist, kann auch über www.SipGate.de eine kostenfreie Lokale Nummer eingerichtet werden.
 
-Die Dateien liegen als templete unter ``` /etc/asterisk ```. Hier wird eine weitere Datei mit dem Namen extensions.conf wird agelegt. Diese Datei enthält die Information, welche WAV Datei abgespielt werden soll. In diesem Fall ist es die Datei alarmmeldung, die als Sounddatei alammeldung.wav in das Verzeichnis ```/var/lib/asterisk/sounds/my/``` kopiert wird. 
-
-Eine beliebige Sound Datei kann mit Text to Speech erstellt werden, z.B. hier https://ttsfree.com/text-to-speech/german
-Wenn man eine Sounddateie im mp3 Format hat, muss diese umgewandelt werden in ein wav Format mit dem folgenden Befehl auf dem Raspberry:
-```ruby
-ffmpeg -i /tmp/mySpeech.mp3 -ar 8000 -ac 1 -ab 64k /var/lib/asterisk/sounds/my/mySpeech.wav
-```
-
-Datei: extensions.conf
-```ruby
-[general]
-autofallthrough=no
-static=yes
-writeprotect=no
-exten => _0X.,1,Dial(SIP/${EXTEN}@alarmanruf,60,r)                   ; die externe NUmmer wird angerufen, die mit 0 beginnt, also 0172xxxx
-[asterisk-phones]                                                    ; Bezeichnung aus der Datei mycall.call
-exten => 10,1,Answer()
-exten => 10,n,Wait(2)
-exten => 10,n,Playback(/var/lib/asterisk/sounds/my/alarmmeldung)     ; die WAV Datei wird hier angegeben
-exten => 10,n,Wait(2)
-exten => 10,n,Hangup()
-```
+##Schritt 3:
 Der Asterisk Server wird mit der Datei ```sip.conf``` konfiguriert und liegt als Vorlage im Verzeichnis ```/etc/asterisk```
 ```ruby
 [general]
@@ -88,25 +69,31 @@ secret = ppppp                                         ; Von der SIP config in d
 host = 192.168.1.1                                     ; FritzBox
 ```
 
-In der Fritz!Box 6591 Cable ist die folgende Configuration für das Telefon hinterlegt worden:
-```ruby
-Name:                alarmanruf
-Anschluss:           LAN/WAN
-Rufnummer ausgehend: 02xxxxxxx1      ; freie ISDN Nummer
-Rufnummer ankommend: 02xxxxxxx1      ; freie ISDN Nummer
-intern:              **620
-```
-Sowie den Anmeldedaten:
+##Schritt 4:
+Die Dateien liegen als templete unter ``` /etc/asterisk ```. Hier wird eine weitere Datei mit dem Namen extensions.conf wird agelegt. Diese Datei enthält die Information, welche WAV Datei abgespielt werden soll. In diesem Fall ist es die Datei alarmmeldung, die als Sounddatei alammeldung.wav in das Verzeichnis ```/var/lib/asterisk/sounds/my/``` kopiert wird. 
 
-Verwenden Sie die folgenden Anmeldedaten, um Ihr IP-Telefon an der FRITZ!Box anzumelden.
+Eine beliebige Sound Datei kann mit Text to Speech erstellt werden, z.B. hier https://ttsfree.com/text-to-speech/german
+Wenn man eine Sounddateie im mp3 Format hat, muss diese umgewandelt werden in ein wav Format mit dem folgenden Befehl auf dem Raspberry:
 ```ruby
-Registrar:     fritz.box oder 192.168.1.1
-Benutzername:  alarmanruf
-Kennwort:      ppppp                       ; secret = ppppp
+ffmpeg -i /tmp/mySpeech.mp3 -ar 8000 -ac 1 -ab 64k /var/lib/asterisk/sounds/my/mySpeech.wav
 ```
 
-Wenn keine freie ISDN Nummer mehr vorhanden ist, kann auch über www.SipGate.de eine kostenfreie Lokale Nummer eingerichtet werden.
+Datei: extensions.conf
+```ruby
+[general]
+autofallthrough=no
+static=yes
+writeprotect=no
+exten => _0X.,1,Dial(SIP/${EXTEN}@alarmanruf,60,r)                   ; die externe NUmmer wird angerufen, die mit 0 beginnt, also 0172xxxx
+[asterisk-phones]                                                    ; Bezeichnung aus der Datei mycall.call
+exten => 10,1,Answer()
+exten => 10,n,Wait(2)
+exten => 10,n,Playback(/var/lib/asterisk/sounds/my/alarmmeldung)     ; die WAV Datei wird hier angegeben
+exten => 10,n,Wait(2)
+exten => 10,n,Hangup()
+```
 
+##Schritt 5:
 Wenn die SIP eingerichtet ist, kann der Asterisk Server getestet werden mit den folgenden Befehlen:
 ```ruby
 asterisk -r                                                                                      ; den Befehl absetzen
@@ -129,4 +116,25 @@ alarmanruf/alarmanruf     192.168.1.1                                 Yes       
 1 sip peers [Monitored: 0 online, 0 offline Unmonitored: 1 online, 0 offline]
 
 ```
+
+##Schritt 6:
+Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichnis  /var/spool/asterisk/outgoing  copieren:
+
+```ruby
+root@fipbox:~# cp /root/mycall.call /var/spool/asterisk/outgoing
+```
+
+Die Datei ``mycall.call`` enthält die folgende Information und liegt imm Verzeichnis ```/root```: 
+```ruby
+Channel: SIP/0171HANDYNUMMER@alarmanruf
+MaxRetries: 2
+RetryTime: 60
+WaitTime: 30
+Context: asterisk-phones
+Extension: 10
+Callerid:2000
+```
+
+
+
 
