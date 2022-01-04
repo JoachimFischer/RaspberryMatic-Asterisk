@@ -37,7 +37,7 @@ Die Dateien liegen als templete unter ``` /etc/asterisk ```. Hier wird eine weit
 Eine beliebige Sound Datei kann mit Text to Speech erstellt werden, z.B. hier https://ttsfree.com/text-to-speech/german
 Wenn man eine Sounddateie im mp3 Format hat, muss diese umgewandelt werden in ein wav Format mit dem folgenden Befehl auf dem Raspberry:
 ```ruby
-root@fipbox:~# ffmpeg -i /tmp/mySpeech.mp3 -ar 8000 -ac 1 -ab 64 /var/lib/asterisk/sounds/my/mySpeech.wav
+ffmpeg -i /tmp/mySpeech.mp3 -ar 8000 -ac 1 -ab 64k /var/lib/asterisk/sounds/my/mySpeech.wav
 ```
 
 Datei: extensions.conf
