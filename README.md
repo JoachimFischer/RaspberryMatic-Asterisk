@@ -21,7 +21,7 @@ Um einen Test Call durchzuführen, muss die Datei  mycall.call in das Verzeichni
 root@fipbox:~# cp /root/mycall.call /var/spool/asterisk/outgoing
 ```
 
-Die Datei ``mycall.call`` enthält die folgende Information:
+Die Datei ``mycall.call`` enthält die folgende Information und liegt imm Verzeichnis ```/root```: 
 ```ruby
 Channel: SIP/0171HANDYNUMMER@alarmanruf
 MaxRetries: 2
