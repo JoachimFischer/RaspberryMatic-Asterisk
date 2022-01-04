@@ -45,11 +45,11 @@ Datei: extensions.conf
 autofallthrough=no
 static=yes
 writeprotect=no
-exten => _0X.,1,Dial(SIP/${EXTEN}@alarmanruf,60,r)
-[asterisk-phones]
+exten => _0X.,1,Dial(SIP/${EXTEN}@alarmanruf,60,r)                   ; die externe NUmmer wird angerufen, die mit 0 beginnt, also 0172xxxx
+[asterisk-phones]                                                    ; Bezeichnung aus der Datei mycall.call
 exten => 10,1,Answer()
 exten => 10,n,Wait(2)
-exten => 10,n,Playback(/var/lib/asterisk/sounds/my/alarmmeldung)
+exten => 10,n,Playback(/var/lib/asterisk/sounds/my/alarmmeldung)     ; die WAV Datei wird hier angegeben
 exten => 10,n,Wait(2)
 exten => 10,n,Hangup()
 ```
