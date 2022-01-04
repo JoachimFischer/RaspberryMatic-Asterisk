@@ -118,6 +118,7 @@ License version 2 and other licenses; you are welcome to redistribute it under
 certain conditions. Type 'core show license' for details.
 =========================================================================
 Connected to Asterisk 16.2.1~dfsg-1+deb10u2 currently running on fipbox (pid = 490)               ; anschließend startet die CLI
+
 fipbox*CLI> sip show registry                                                                     ; im CLI den Befehl absetzen
 Host                                    dnsmgr Username       Refresh State                Reg.Time                 
 192.168.1.1:5060                        N      alarmanruf         285 Registered           Tue, 04 Jan 2022 19:40:21
