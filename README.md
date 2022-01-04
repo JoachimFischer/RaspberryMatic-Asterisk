@@ -53,6 +53,37 @@ exten => 10,n,Playback(/var/lib/asterisk/sounds/my/alarmmeldung)
 exten => 10,n,Wait(2)
 exten => 10,n,Hangup()
 ```
+Der Asterisk Server wird mit der Datei ```sip.conf``` konfiguriert und liegt als Vorlage im Verzeichnis ```/etc/asterisk```
+```ruby
+[general]
+allowguest=no
+port = 5060                                            ; Standard Port
+bindaddr = 0.0.0.0
+qualify = no
+disable = all
+allow = alaw
+allow = ulaw
+videosupport = yes
+dtmfmode = rfc2833
+srvlookup = yes
+localnet=192.168.1.1/255.255.255.0                     ; IP der FritzBox
+directmedia = no
+nat = yes
+transport = udp
+register => alarmanruf:ppppp@192.168.1.1/alarmanruf    ; Für die Registrierung der SIP aus der FritzBox
+                                                       ; In der FritzBox habe ich einen SIP mit user: alarmanruf und passwort: ppppp sowie Namen: alarmanruf eingerichtet
 
+[alarmanruf]                                           ; Von der SIP config in der FritzBox
+permit=192.168.1.1/255.255.255.0                       ; IP der FritzBox
+type = friend
+contect=phones
+insecure = invite,port
+authuser = alarmanruf                                  ; Von der SIP config in der FritzBox
+username = alarmanruf                                  ; Von der SIP config in der FritzBox
+fromuser = alarmanruf                                  ; Von der SIP config in der FritzBox
+fromdomain = fritz.box
+secret = ppppp                                         ; Von der SIP config in der FritzBox
+host = 192.168.1.1                                     ; FritzBox
+```
 
-
+In der Fritz!Box ist die folgende Configuration hinterlegt worden:
