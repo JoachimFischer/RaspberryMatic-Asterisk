@@ -7,6 +7,10 @@ Installation vom Asterisk Server auf dem Raspberry
 su root
 sudo apt-get install asterisk
 ```
+Für die deinstallation von Asterisk folgenden Befel eingeben:
+```ruby
+sudo apt-get remove asterisk
+```
 
 Test der Asterisk installation:
 ```ruby
